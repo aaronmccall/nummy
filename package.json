@@ -1,10 +1,10 @@
 {
   "name": "nummy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "All the sweetness of Sugar's number module without extending natives.",
   "main": "number.js",
   "scripts": {
-    "test":  "lab",
+    "test": "lab",
     "test-cov": "lab -r html -o coverage.html"
   },
   "repository": {
