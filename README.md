@@ -46,12 +46,12 @@ In addition several, not directly number-related methods are omitted.
 ### Range methods
 
 - Number.range
-- #downto/#upto
-- #clamp
-- #cap
+- \#downto/\#upto
+- \#clamp
+- \#cap
 
 
 ### Date methods
 
-- #duration
-- #{unit}, #{unit}Ago, #{unit}Before, #{unit}After, #{unit}FromNow
+- \#duration
+- \#{unit}, \#{unit}Ago, \#{unit}Before, \#{unit}After, \#{unit}FromNow
