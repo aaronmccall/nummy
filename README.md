@@ -55,3 +55,7 @@ In addition several, not directly number-related methods are omitted.
 
 - \#duration
 - \#{unit}, \#{unit}Ago, \#{unit}Before, \#{unit}After, \#{unit}FromNow
+
+### Function methods
+
+- \#times: equivalent functionality is available in underscore and lo-dash

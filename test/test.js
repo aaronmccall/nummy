@@ -29,10 +29,12 @@ describe('nummy', function() {
         expect(nummy.chain(1)).to.be.an.instanceOf(nummy.NummyChain);
     }));
     it('sets nummy() default format if defaultFormat is set', wrapDone(function () {
-        nummy.defaultFormat = [3, 'k', 'd'];
+        var oldFormat = nummy(1).options.format;
+        nummy.setOptions({ format: {place: 3, thousands: 'k', decimal: 'd'} });
         var $num = nummy(5000.0000);
         expect($num._format).to.eql(nummy.defaultFormat);
         expect(String($num)).to.equal('5k000d000');
+        nummy.setOptions({ format: oldFormat });
     }));
     describe('.random', function() {
         it('returns 0 or 1 when called with no params', wrapDone(function() {

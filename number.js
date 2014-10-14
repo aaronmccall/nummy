@@ -17,12 +17,11 @@
   *  are copyright Andrew Plummer per the original license and copyright header above.
   *  The Nummy constructor and method modifications are Copyright (c) 2014 Aaron McCall
   */
-var Nummy = require('./lib/Nummy');
-var NummyChain = require('./lib/NummyChain').init(Nummy);
+var baseNummy = require('./lib/Nummy');
+var baseChain = require('./lib/NummyChain');
+var utils = require('./lib/utils');
 
-function isUndefined(o) {
-    return typeof o === 'undefined';
-}
+var options, Nummy, NummyChain;
 
 var ceil = Math.ceil;
 var floor = Math.floor;
@@ -30,25 +29,29 @@ var min = Math.min;
 var max = Math.max;
 
 // Add chaining to Nummy's prototype
-Nummy.prototype.chain = function () {
+baseNummy.Nummy.prototype.chain = function () {
     return new NummyChain(this.number);
 };
 
 var nummy = module.exports = function (number) {
-    var instance = new Nummy(number);
-    if (nummy.defaultFormat) {
-        instance.setDefaultFormat.apply(instance, nummy.defaultFormat);
-    }
-    return instance;
+    return new Nummy(number);
 };
-
-nummy.Nummy = Nummy;
-nummy.NummyChain = NummyChain;
 
 // Add chain entry point to exports
 nummy.chain = function (number) {
     return new NummyChain(number);
 };
+
+nummy.setOptions = function (opts) {
+    if (utils.smartTypeof(opts) === 'object') {
+        options = opts;
+        Nummy = nummy.Nummy = baseNummy.init(options);
+        NummyChain = nummy.NummyChain = baseChain.init(Nummy, options);
+    }
+
+};
+
+nummy.setOptions({});
 
 /***
  * @method Number.random([n1], [n2])
@@ -68,7 +71,7 @@ nummy.random = function(n1, n2) {
         n2 = n1;
         n1 = 0;
     }
-    minNum = min(n1 || 0, isUndefined(n2) ? 1 : n2);
-    maxNum = max(n1 || 0, isUndefined(n2) ? 1 : n2) + 1;
+    minNum = min(n1 || 0, utils.isUndefined(n2) ? 1 : n2);
+    maxNum = max(n1 || 0, utils.isUndefined(n2) ? 1 : n2) + 1;
     return floor((Math.random() * (maxNum - minNum)) + minNum);
 };
