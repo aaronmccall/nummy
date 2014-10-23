@@ -135,43 +135,51 @@ describe('NummyChain', function() {
             expect(String(chain)).to.equal('5.000,0');
         }));
 
-        it('number methods call the Nummy instance method and update the instance\'s number prop', wrapDone(function () {
-            
+        describe('number methods call the Nummy instance method and update the its number prop', function () {
             nummy.NummyChain._numberMethods.forEach(function (name) {
-                var chain = nummy.chain(10);
-                var spy = sinon.spy(nummy.Nummy.prototype, name);
-                chain[name](2);
-                expect(spy.returned(chain.value())).to.equal(true);
-                if (isNaN(chain.nummy.number)) {
-                    expect(isNaN(chain.nummy.number)).to.equal(isNaN(chain.value()));
-                } else {
-                    expect(chain.nummy.number).to.equal(chain.value(), name + ' failed');
-                }
-                spy.restore();
+                if (name === 'methods') return;
+                it ('#' + name, wrapDone(function () {
+                    var chain = nummy.chain(10);
+                    var spy = sinon.spy(nummy.Nummy.prototype, name);
+                    chain[name](2);
+                    expect(spy.returned(chain.value())).to.equal(true);
+                    if (isNaN(chain.nummy.number)) {
+                        expect(isNaN(chain.nummy.number)).to.equal(isNaN(chain.value()));
+                    } else {
+                        expect(chain.nummy.number).to.equal(chain.value(), name + ' failed');
+                    }
+                    spy.restore();
+                }));
             });
-        }));
+        });
+        
 
-        it('boolean methods call the Nummy instance method and update the Nummy instance\'s boolean prop', wrapDone(function () {
+        describe('boolean methods call the Nummy instance method and update the its boolean prop', function () {
             var chain = nummy.chain(10);
             nummy.NummyChain._booleanMethods.forEach(function (name) {
-                var spy = sinon.spy(nummy.Nummy.prototype, name);
-                chain[name](3);
-                expect(spy.returned(chain.value())).to.equal(true, name + ': chain.value() ' + chain.value() + ' Nummy.valueOf() ' + chain.nummy.valueOf());
-                expect(chain.nummy.boolean).to.equal(chain.value());
-                spy.restore();
+                if (name === 'methods') return;
+                it('#' + name, wrapDone(function () {
+                    var spy = sinon.spy(nummy.Nummy.prototype, name);
+                    chain[name](3);
+                    expect(spy.returned(chain.value())).to.equal(true, name + ': chain.value() ' + chain.value() + ' Nummy.valueOf() ' + chain.nummy.valueOf());
+                    expect(chain.nummy.boolean).to.equal(chain.value());
+                    spy.restore();
+                }));
             });
-        }));
+        });
 
-        it('string methods call the Nummy instance method and update the instance\'s string prop', wrapDone(function () {
+        describe('string methods call the Nummy instance method and update the instance\'s string prop', function () {
             nummy.NummyChain._stringMethods.forEach(function (name) {
-                if (name.charAt(0) === '_') return;
-                var chain = nummy.chain(10);
-                var spy = sinon.spy(nummy.Nummy.prototype, name);
-                chain[name](1);
-                expect(spy.returned(chain.value())).to.equal(true, name + ': chain.value() ' + chain.value() + ' Nummy.valueOf() ' + chain.nummy.valueOf());
-                expect(chain.nummy.string).to.equal(chain.value());
-                spy.restore();
+                if (name.charAt(0) === '_' || name === 'methods') return;
+                it('#' + name, wrapDone(function () {
+                    var chain = nummy.chain(10);
+                    var spy = sinon.spy(nummy.Nummy.prototype, name);
+                    chain[name](1);
+                    expect(spy.returned(chain.value())).to.equal(true, name + ': chain.value() ' + chain.value() + ' Nummy.valueOf() ' + chain.nummy.valueOf());
+                    expect(chain.nummy.string).to.equal(chain.value());
+                    spy.restore();
+                }));
             });
-        }));
+        });
     });
 });

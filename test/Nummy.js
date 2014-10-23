@@ -9,6 +9,7 @@ var beforeEach = lab.beforeEach;
 
 var nummy = require('../');
 
+var arrayTests = require('./Nummy_array');
 var booleanTests = require('./Nummy_boolean');
 var conversionTests = require('./Nummy_conversion');
 var numberTests = require('./Nummy_number');
@@ -82,7 +83,7 @@ describe('Nummy', function() {
         it('sets format\'s default format spec', wrapDone(function () {
             var myNummy = nummy(5400);
             var oldFormat = _.extend({}, myNummy.options.format);
-            myNummy.setDefaultFormat(2, '.', ',');
+            myNummy.setDefaultFormat({place: 2, thousands: '.', decimal: ','});
             expect(myNummy.options.format).to.eql({place: 2, thousands: '.', decimal: ','});
             expect(myNummy.abbr(1)).to.equal('5,40k');
             myNummy.setDefaultFormat(oldFormat);
@@ -107,6 +108,8 @@ describe('Nummy', function() {
             expect(myNummy.toString()).to.equal(myNummy.format());
         }));
     });
+
+    arrayTests(nummy, lab, expect);
 
     booleanTests(nummy, lab, expect);
 

@@ -395,7 +395,6 @@ module.exports = function (nummy, lab, expect) {
                 [Math.pow(2, 8), Math.pow(3, 3)],
                 [nummy.random(20, 100), nummy.random(0, 10)],
                 [nummy.random(0, 100), Infinity],
-                [NaN, nummy.random(0, 100)]
             ], function (values) {
                 var expected = values.reduce(function (prev, curr) {
                     return prev * curr;
@@ -410,6 +409,9 @@ module.exports = function (nummy, lab, expect) {
                     expect(nummied).to.equal(expected);
                 }));
             });
+            it('tolerates NaN', wrapDone(function () {
+                expect(nummy(NaN).product(1,2,3)).to.equal(6);
+            }));
         });
 
         describe('#round', function () {
@@ -533,8 +535,7 @@ module.exports = function (nummy, lab, expect) {
                 [13, 92],
                 [Math.pow(2, 8), Math.pow(3, 3)],
                 [nummy.random(20, 100), nummy.random(0, 10)],
-                [nummy.random(0, 100), Infinity],
-                [NaN, nummy.random(0, 100)]
+                [nummy.random(0, 100), Infinity]
             ], function (values) {
                 var expected = values.reduce(function (prev, curr) {
                     return prev + curr;
@@ -549,6 +550,9 @@ module.exports = function (nummy, lab, expect) {
                     expect(nummied).to.equal(expected, 'nummied: ' + nummied);
                 }));
             });
+            it('tolerates NaN', wrapDone(function () {
+                expect(nummy(NaN).sum(1,2,3,4)).to.equal(10);
+            }));
         });
 
         describe('#tan', function () {
