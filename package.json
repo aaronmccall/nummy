@@ -2,7 +2,7 @@
   "name": "nummy",
   "version": "1.0.1",
   "description": "All the sweetness of Sugar's number module without extending natives.",
-  "main": "number.js",
+  "main": "nummy.js",
   "scripts": {
     "test": "lab",
     "test-cov": "lab -r html -o coverage.html"
@@ -18,6 +18,9 @@
     "utility"
   ],
   "author": "Aaron McCall <aaron@andyet.net>",
+  "contributors": [
+    "Andrew Plummer"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aaronmccall/nummy/issues"
