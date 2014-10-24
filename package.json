@@ -1,6 +1,6 @@
 {
   "name": "nummy",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "All the sweetness of Sugar's number module without extending natives.",
   "main": "nummy.js",
   "scripts": {
