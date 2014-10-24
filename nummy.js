@@ -33,8 +33,8 @@ baseNummy.Nummy.prototype.chain = function () {
     return new NummyChain(this.number);
 };
 
-var nummy = module.exports = function (number) {
-    return new Nummy(number);
+var nummy = module.exports = function (number, opts) {
+    return new Nummy(number, opts);
 };
 
 // Add chain entry point to exports
