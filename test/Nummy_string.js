@@ -337,7 +337,6 @@ module.exports = function (nummy, lab, expect) {
                 [Math.pow(2, 16), 8],
                 [nummy.random(200, 10000), nummy.random(0, 10)],
                 [Infinity, nummy.random(0, 10)],
-                [NaN, nummy.random(0, 10)]
             ], function (values) {
                 var expected = pad(values[0].toString(2), values[1]);
                 if (_.anyNaN.apply(null, values) || _.anyInfinite.apply(null, values)) {
