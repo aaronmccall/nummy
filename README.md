@@ -77,11 +77,11 @@ console.log(myNummy.factor(45));
 ```
 
 <a name="api">
-### API Docs
+## API Docs
 <a name="string">
-#### String methods
+### String methods
 
-**Base conversion**
+#### Base conversion
 
 All of the base conversion methods follow the same signature: _method(number[**](#sig-note), padTo)_
 
@@ -89,7 +89,7 @@ All of the base conversion methods follow the same signature: _method(number[**]
 - \#binary: `nummy(9740).binary(16) => "0010011000001100"`
 - \#hex: `nummy(7178).hex(8) => "00001C0A"`
 
-**Format numbers according to common unit systems**
+#### Format numbers according to common unit systems
 
 - \#abbr: `nummy(7645).abbr(3) => "7.645k"`
 - \#bytes: `nummy(1478).bytes(2) => "1.44kB"`
@@ -105,11 +105,11 @@ Both `bytes` and `metric` also take a `limit` argument which indicates the highe
 - \#pad: nummy(6275).pad(8) => "00006275"
 
 <a name="math">
-#### Mathematical operation methods:
+### Mathematical operation methods:
 
 I've added a number of additional mathematical operation methods:
 
-**Single argument methods**
+#### Single argument methods
 
 The following methods all have a single argument signature: _method(number[**][])_
 
@@ -125,7 +125,7 @@ The following methods all have a single argument signature: _method(number[**][]
 - \#sqrt: `nummy(3950).sqrt() => 62.849025449882674`
 - \#tan: `nummy(1.1).tan() => 1.9647596572486523`
 
-**Two argument methods**
+#### Two argument methods
 
 The following methods all have a two argument signature: _method(number1[**][], number2)_
 
@@ -142,7 +142,7 @@ The following methods all have a two argument signature: _method(number1[**][], 
 - \#subtract: (alias: minus) `nummy(5283).subtract(1) => 5282`
 - \#subtractFrom: `nummy(7908).subtractFrom(0) => -7908`
 
-** Multi-argument methods**
+#### Multi-argument methods
 
 The following methods all have a multiple argument signature: _method([num1[**][][, num2, …]])_
 
@@ -152,7 +152,7 @@ The following methods all have a multiple argument signature: _method([num1[**][
 - \#sum: returns the result of adding all of its arguments together `nummy(1).sum(2,3,4) => 10`
 
 <a name="cast">
-#### Casting and Conversion methods
+### Casting and Conversion methods
 
 The following methods all have a single argument signature: _method(number[**][])_
 
@@ -162,9 +162,9 @@ The following methods all have a single argument signature: _method(number[**][]
 - \#toNumber: `nummy('-482.50145046040416').toNumber() => -482.50145046040416`
 
 <a name="bool">
-#### Test (is) methods
+### Test (is) methods
 
-**Single argument methods**
+#### Single argument methods
 
 The following methods all have a single argument signature: _method(number[**][])_
 
@@ -172,7 +172,7 @@ The following methods all have a single argument signature: _method(number[**][]
 - \#isInteger: `nummy(1433).isInteger() => true`
 - \#isOdd: `nummy(6296).isOdd() => false`
 
-**Two argument methods**
+#### Two argument methods
 
 The following methods all have a two argument signature: _method(number1[**][], number2)_
 
@@ -180,24 +180,22 @@ The following methods all have a two argument signature: _method(number1[**][], 
 - \#isFactorOf: `nummy(3).isFactorOf(9933) => true`
 
 <a name="array">
-#### Methods that return arrays
-
-**Single argument methods**
+### Methods that return arrays
 
 The following methods all have a single argument signature: _method(number[**][])_
 
 - \#factor: `nummy(234).factor() => [ 1, 2, 3, 6, 9, 13, 18, 26, 39, 78, 117 ]`
 
 <a name="advanced">
-### Advanced usage
+## Advanced usage
 
-#### Functional programming
+### Functional programming
 
 ```javascript
 var _ = require('underscore');
 var nummy = require('nummy');
 
-var range = _.range();
+var range = _.range(13);
 var table = [];
 
 range.forEach(function (num) {
@@ -208,3 +206,9 @@ range.forEach(function (num) {
 console.table(table);
 ```
 ![](https://cldup.com/SCnU3rbqlj.png)
+
+## Acknowledgements
+
+- Many thanks to [Andrew Plummer](https://github.com/andrewplummer) for his pioneering work in creating the [SugarJS number module](http://sugarjs.com/features#number). Many of the methods in Nummy are directly adapted from Sugar's number methods.
+
+- Also, I owe a big "Thank you!" to [Nathan Fritz](https://github.com/fritzy) for challenging me to think beyond the initial limits of Nummy 1.0.
