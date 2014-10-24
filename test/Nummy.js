@@ -57,12 +57,12 @@ describe('Nummy', function() {
 
     describe('#_handleResult', function () {
 
-        it('sets #lastType to type of last operation', wrapDone(function () {
+        it('sets #lastType to type of last operation if options.updateValue is true', wrapDone(function () {
             var spy = sinon.spy(nummy.Nummy.prototype, '_handleResult');
             var results = [];
             var lastTypes = [];
             ['isOdd', 'exp', 'abbr'].forEach(function (name) {
-                var $num = nummy(2000);
+                var $num = nummy(2000, {updateValue: true});
                 results.push($num[name]());
                 lastTypes.push($num.lastType);
             });
