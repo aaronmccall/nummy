@@ -1,7 +1,7 @@
 {
   "name": "nummy",
   "version": "2.1.1",
-  "description": "All the sweetness of Sugar's number module without extending natives.",
+  "description": "Nummy is a functional and modular number computation, description, and formatting library.",
   "main": "nummy.js",
   "scripts": {
     "test": "lab",
